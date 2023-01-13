@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const [burgerSidebarActive, setBurgerSidebarActive] =
+    useState<boolean>(false);
+
+  const onBurgerButtonClick = () =>
+    setBurgerSidebarActive(!burgerSidebarActive);
+
   return (
     <header className="header header--home  ">
       <div className="container">
@@ -18,8 +24,16 @@ const Header: React.FC = () => {
             <span>Сhinese Empire</span>
           </Link>
 
-          <div className="header__info">
-            <button className="header__info-close" type="button"></button>
+          <div
+            className={
+              burgerSidebarActive ? 'header__info active' : 'header__info'
+            }
+          >
+            <button
+              onClick={onBurgerButtonClick}
+              className="header__info-close"
+              type="button"
+            ></button>
             <nav className="header__menu">
               <ul className="header__menu-list">
                 <li className="header__nav-item">
@@ -100,7 +114,11 @@ const Header: React.FC = () => {
               </a>
             </div>
           </div>
-          <button className="header__burger" type="button">
+          <button
+            onClick={onBurgerButtonClick}
+            className="header__burger"
+            type="button"
+          >
             <span></span>
           </button>
         </div>
