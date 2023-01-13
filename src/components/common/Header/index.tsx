@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
     <header className="header header--home  ">
       <div className="container">
         <div className="header__wrap">
-          <a className="header__logo">
+          <Link to="/" className="header__logo">
             <img
               className="header__logo-icon header__logo-img"
               src="static/img/svg/logo-page.svg"
@@ -15,34 +16,36 @@ const Header: React.FC = () => {
               <use xlinkHref="img/sprite_auto.svg#logo"></use>
             </svg>
             <span>Сhinese Empire</span>
-          </a>
+          </Link>
 
           <div className="header__info">
             <button className="header__info-close" type="button"></button>
             <nav className="header__menu">
               <ul className="header__menu-list">
                 <li className="header__nav-item">
-                  <a className="header__nav-link active">Главная</a>
+                  <NavLink to="/" className="header__nav-link">
+                    Главная
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link " href="./about.html">
+                  <NavLink to="/about" className="header__nav-link ">
                     О компании
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link " href="./courses.html">
+                  <NavLink to="/courses" className="header__nav-link ">
                     Курсы
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link " href="./reviews.html">
+                  <NavLink to="/reviews" className="header__nav-link ">
                     Отзывы
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link " href="./news.html">
+                  <NavLink to="/news" className="header__nav-link ">
                     Новости
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </nav>

@@ -1,43 +1,44 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__wrap">
-          <a className="footer__logo" href="home.html">
+          <Link to="/" className="footer__logo">
             <svg className="footer__logo-icon">
               <use xlinkHref="img/sprite_auto.svg#logo"></use>
             </svg>
             <span>Сhinese Empire</span>
-          </a>
+          </Link>
           <div className="footer__info">
             <nav className="footer__menu">
               <ul className="footer__menu-list">
                 <li className="footer__nav-item">
-                  <a className="footer__nav-link " href="/home.html">
+                  <Link to="/" className="footer__nav-link ">
                     Главная
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer__nav-item">
-                  <a className="footer__nav-link " href="./programs.html">
+                  <Link to="/about" className="footer__nav-link ">
                     О компании
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer__nav-item">
-                  <a className="footer__nav-link " href="./programs.html">
+                  <Link to="/courses" className="footer__nav-link ">
                     Курсы
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer__nav-item">
-                  <a className="footer__nav-link " href="./programs.html">
+                  <Link to="/reviews" className="footer__nav-link ">
                     Отзывы
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer__nav-item">
-                  <a className="footer__nav-link " href="./programs.html">
+                  <Link to="/news" className="footer__nav-link ">
                     Новости
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
