@@ -1,17 +1,11 @@
 import React from 'react';
 
-import Header from '../../components/common/Header';
-import Footer from '../../components/common/Footer';
-import HomePage from '../../pages/home/HomePage';
+interface IMcBaseLayoutProps {
+  children: React.ReactNode;
+}
 
-const BaseLayout = () => {
-  return (
-    <div className="wrapper">
-      <Header />
-      <HomePage />
-      <Footer />
-    </div>
-  );
+const BaseLayout: React.FC<IMcBaseLayoutProps> = ({ children }) => {
+  return <div className="wrapper">{children}</div>;
 };
 
 export default BaseLayout;
