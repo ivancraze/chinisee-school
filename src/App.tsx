@@ -1,7 +1,10 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import './App.css';
+
+import { store } from './store';
 
 import BaseLayout from './layouts/BaseLayout';
 import Header from './components/common/Header';
@@ -15,20 +18,22 @@ import NewsPage from './pages/news/NewsPage';
 
 function App() {
   return (
-    <BaseLayout>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/courses" element={<CoursePage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="**" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </BaseLayout>
+    <Provider store={store}>
+      <BaseLayout>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/courses" element={<CoursePage />} />
+            <Route path="/reviews" element={<ReviewsPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="**" element={<NotFoundPage />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </BaseLayout>
+    </Provider>
   );
 }
 
