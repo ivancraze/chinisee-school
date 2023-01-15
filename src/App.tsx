@@ -7,6 +7,7 @@ import './App.css';
 import { store } from './store';
 
 import BaseLayout from './layouts/BaseLayout';
+import ModalLayout from './layouts/ModalLayout';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import HomePage from './pages/home/HomePage';
@@ -31,6 +32,7 @@ function App() {
             <Route path="**" element={<NotFoundPage />} />
           </Routes>
           <Footer />
+          <ModalLayout />
         </BrowserRouter>
       </BaseLayout>
     </Provider>
