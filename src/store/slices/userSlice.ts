@@ -1,37 +1,71 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { IUserRegisterRequest } from '../../types/user';
+import { IAuthState } from '../../types/user';
 
-const initialState: IUserRegisterRequest = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  role: '',
+const initialState: IAuthState = {
+  isLoggedIn: false,
+  accessToken: '',
+  user: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    role: '',
+  },
+  errors: { message: '' },
 };
+
+export const registerRequest = createAsyncThunk(
+  'user/registerRequest',
+  async () => {},
+);
+const loginRequest = createAsyncThunk('user/loginRequest', async () => {});
+const logoutRequest = createAsyncThunk('user/logoutRequest', async () => {});
 
 const userSlice = createSlice({
   name: 'modal',
   initialState,
-  reducers: {
-    registerUser: (state, action) => {},
-    registerUserSuccess: (state, action) => {},
-    registerUserError: (state, action) => {},
-    authUser: (state, action) => {},
-    authUserSuccess: (state, action) => {},
-    authUserError: (state, action) => {},
-    logoutUser: (state, action) => {},
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(registerRequest.fulfilled, (state, action) => {
+        state.accessToken = 'token';
+        state.isLoggedIn = true;
+        state.errors.message = '';
+      })
+      .addCase(registerRequest.rejected, (state, action) => {
+        state.errors.message = 'error';
+      });
+
+    builder
+      .addCase(loginRequest.fulfilled, (state, action) => {
+        state.accessToken = 'token';
+        state.isLoggedIn = true;
+        state.errors.message = '';
+      })
+      .addCase(loginRequest.rejected, (state, action) => {
+        state.errors.message = 'error';
+      });
+
+    builder
+      .addCase(logoutRequest.fulfilled, (state, action) => {
+        state.accessToken = 'token';
+        state.isLoggedIn = true;
+        state.errors.message = '';
+      })
+      .addCase(logoutRequest.rejected, (state, action) => {
+        state.errors.message = 'error';
+      });
   },
 });
 
-export const {
-  registerUser,
-  registerUserSuccess,
-  registerUserError,
-  authUser,
-  authUserSuccess,
-  authUserError,
-  logoutUser,
-} = userSlice.actions;
+// export const {
+//   registerUser,
+//   registerUserSuccess,
+//   registerUserError,
+//   authUser,
+//   authUserSuccess,
+//   authUserError,
+//   logoutUser,
+// } = userSlice.actions;
 
 export default userSlice.reducer;
