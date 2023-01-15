@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
-import ModalLayout from '../../../layouts/ModalLayout';
-import AuthModal from '../modals/AuthModal';
 import { useDispatch } from 'react-redux';
+
+import { ModalsType } from '../../../constants';
 
 const Header: React.FC = () => {
   const [burgerSidebarActive, setBurgerSidebarActive] =
@@ -11,7 +10,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   const onEnterButtonClick = () => {
-    dispatch({ type: 'saga/showModal' });
+    dispatch({ type: 'saga/showModal', payload: ModalsType.authModal });
   };
 
   const onBurgerButtonClick = () =>
@@ -141,10 +140,6 @@ const Header: React.FC = () => {
           </div>
         </div>
       </header>
-
-      <ModalLayout>
-        <AuthModal />
-      </ModalLayout>
     </>
   );
 };
